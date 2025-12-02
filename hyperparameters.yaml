@@ -1,0 +1,31 @@
+optimizer : AdamW
+batch: 32
+lr0: 0.003         # 초기 학습률 (작게 시작)
+lrf: 0.1           # 최종 학습률 비율 ↑ (더 부드럽게 감소)
+imgsz : 640 
+weight_decay: 0.0001   # 작은 모델은 가중치 규제 약하게
+warmup_epochs: 2.0     # 빠른 워밍업
+warmup_momentum: 0.85
+warmup_bias_lr: 0.05
+
+# === 손실 가중치 ===
+box: 6.0   # 7.0->6.0
+cls: 0.2
+dfl: 1.6  #1.5->1.7
+
+# === 데이터 증강 ===
+hsv_h: 0.015
+hsv_s: 0.6
+hsv_v: 0.4
+degrees: 0.0
+translate: 0.1
+scale: 0.3       # 스케일 변환 줄임 → 차량 크기 유지
+shear: 0.0
+flipud: 0.0
+fliplr: 0.3
+mosaic: 0.3      # Mosaic 강도 줄임 → 작은 모델 학습 안정화
+mixup: 0.0    
+copy_paste: 0.0 
+
+# === 기타 ===
+close_mosaic: 15     # 학습 후반 Mosaic 중단 (정확도 향상)
